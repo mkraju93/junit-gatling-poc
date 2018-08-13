@@ -8,13 +8,13 @@ class PerformanceSimulation extends Simulation {
 
   val httpProtocol = http
     .baseURL("http://localhost:8080")
-    .acceptHeader("text/plain")
+    .acceptHeader("application/json")
     .acceptEncodingHeader("gzip, deflate")
     .userAgentHeader("Gatling")
 
   val scn = scenario("PerformanceSimulation")
-    .repeat(10) {
-      exec(http("GET /io").get("/io"))
+    .repeat(1) {
+      exec(http("GET /person/2").get("/person/2"))
     }
 
   setUp(
